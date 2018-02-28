@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -22,6 +23,7 @@ import com.wisely.highlight_springmvc4.messageconverter.MyMessageConverter;
 
 @Configuration
 @EnableWebMvc // 1 开户SpringMVC支持
+@EnableScheduling
 @ComponentScan("com.wisely.highlight_springmvc4")
 // 2 继承该类，重写其方法对SpringMVC配置
 public class MyMvcConfig extends WebMvcConfigurerAdapter {
@@ -63,6 +65,8 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 		registry.addViewController("/index").setViewName("/index");
 		registry.addViewController("/toUpload").setViewName("/upload");
 		registry.addViewController("/converter").setViewName("/converter");
+		registry.addViewController("/see").setViewName("/see");
+		registry.addViewController("/async").setViewName("/async");
 	}
 
 	// 通过重写该方法设定不忽略路径"."后面的参数
